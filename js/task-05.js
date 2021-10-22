@@ -1,12 +1,14 @@
 'use strict';
 
-const inputRef = document.querySelector('#name-input');
-const outputRef = document.querySelector('#name-output');
+const inputEl = document.querySelector('#name-input');
+const outputEl = document.querySelector('#name-output');
+const outputTextDefault = outputEl.textContent;
 
-inputRef.addEventListener('input', e => {
-  outputRef.textContent = e.target.value;
+const onInputChange = function (event) {
+  if (event.currentTarget.value === '') {
+    return (outputEl.textContent = outputTextDefault);
+  }
+  return (outputEl.textContent = event.currentTarget.value);
+};
 
-  e.target.value
-    ? (outputRef.textContent = e.target.value)
-    : (outputRef.textContent = outputRef);
-});
+inputEl.addEventListener('input', onInputChange);
