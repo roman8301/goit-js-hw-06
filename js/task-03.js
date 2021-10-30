@@ -13,16 +13,18 @@ const images = [
   },
 ];
 
-const createGallery = function (galleryObj) {
-  const gallery = document.querySelector('.gallery');
-  galleryObj.map(image => {
-    gallery.insertAdjacentHTML(
-      'afterbegin',
-      `<li class='img-item'><img src = ${image.url} alt=${image.alt}></li>`,
-    );
-  });
+const gallery = document.querySelector('.gallery');
+const gallaryList = images
+  .map(
+    image =>
+      `<li><img src ='${image.url}' alt='${image.alt}' 
+      width='400'></li>`,
+  )
+  .join('');
 
-  return gallery;
-};
+gallery.style.listStyle = 'none';
+gallery.style.display = 'flex';
+gallery.style.justifyContent = 'space-evenly';
+gallery.style.alignItems = 'center';
 
-createGallery(images);
+gallery.insertAdjacentHTML('beforeend', gallaryList);
