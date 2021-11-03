@@ -1,11 +1,9 @@
 'use strict';
 
-const fontSizeControl = document.querySelector('#font-size-control');
-const textEl = document.querySelector('#text');
+const fontSizeControl = document.getElementById('font-size-control');
+const textEl = document.getElementById('text');
+textEl.style.fontSize = '56px';
 
-const onFontSizeChange = function (rangeOfChange) {
-  const fontSizeChange = rangeOfChange.currentTarget.value + 'px';
-  textEl.style.fontSize = fontSizeChange;
-};
-
-fontSizeControl.addEventListener('input', onFontSizeChange);
+fontSizeControl.addEventListener('input', () => {
+  textEl.style.fontSize = fontSizeControl.value + 'px';
+});
